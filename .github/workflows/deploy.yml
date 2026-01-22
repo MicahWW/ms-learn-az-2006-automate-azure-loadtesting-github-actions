@@ -8,7 +8,7 @@ permissions:
 
 env:
   # For AZURE_WEBAPP_NAME enter just the name, not the full URL.
-  AZURE_WEBAPP_NAME: <your web app name> 
+  AZURE_WEBAPP_NAME: az2006app3057
   RESOURCE_GROUP: az2006-rg
   
 
@@ -19,9 +19,9 @@ jobs:
 
     steps:
     # Setup .net
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: '8.0.x'
 
@@ -38,14 +38,14 @@ jobs:
     
     # upload the published website code artifacts
     - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: .net-app
         path: ${{env.DOTNET_ROOT}}/app.zip
 
     #Download the publish files created in previous job
     - name: Download artifact from build job
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: .net-app
         path: .net-app
